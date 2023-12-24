@@ -1,0 +1,399 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{Inductive}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ Inductive\isanewline
+\ \ \isakeyword{imports}\ Main\isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsection{Inductive%
+}
+\isamarkuptrue%
+%
+\isamarkupsubsection{Inductive definition of the even numbers%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{inductive}\isamarkupfalse%
+\ ev\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+ev{\isadigit{0}}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}ev\ {\isadigit{0}}{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\isanewline
+evSS{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}ev\ n\ {\isasymLongrightarrow}\ ev\ {\isacharparenleft}{\kern0pt}Suc{\isacharparenleft}{\kern0pt}Suc\ n{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ ev{\isadigit{0}}\ evSS\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ ev{\isachardot}{\kern0pt}intros\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ ev{\isachardot}{\kern0pt}intros{\isacharparenleft}{\kern0pt}{\isadigit{1}}{\isacharparenright}{\kern0pt}\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ ev{\isachardot}{\kern0pt}intros{\isacharparenleft}{\kern0pt}{\isadigit{2}}{\isacharparenright}{\kern0pt}\isanewline
+\isanewline
+\isacommand{print{\isacharunderscore}{\kern0pt}theorems}\isamarkupfalse%
+%
+\begin{isamarkuptext}%
+Using the introduction rules:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}ev\ {\isacharparenleft}{\kern0pt}Suc{\isacharparenleft}{\kern0pt}Suc{\isacharparenleft}{\kern0pt}Suc{\isacharparenleft}{\kern0pt}Suc\ {\isadigit{0}}{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}rule\ evSS{\isacharparenright}{\kern0pt}{\isacharplus}{\kern0pt}\isanewline
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}rule\ ev{\isadigit{0}}{\isacharparenright}{\kern0pt}\isanewline
+\isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ evSS{\isacharbrackleft}{\kern0pt}OF\ evSS{\isacharbrackleft}{\kern0pt}OF\ ev{\isadigit{0}}{\isacharbrackright}{\kern0pt}{\isacharbrackright}{\kern0pt}%
+\begin{isamarkuptext}%
+A recursive definition of evenness:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{fun}\isamarkupfalse%
+\ evn\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}nat\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\ \isakeyword{where}\isanewline
+{\isachardoublequoteopen}evn\ {\isadigit{0}}\ {\isacharequal}{\kern0pt}\ True{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\isanewline
+{\isachardoublequoteopen}evn\ {\isacharparenleft}{\kern0pt}Suc\ {\isadigit{0}}{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ False{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\isanewline
+{\isachardoublequoteopen}evn\ {\isacharparenleft}{\kern0pt}Suc{\isacharparenleft}{\kern0pt}Suc\ n{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ evn\ n{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+A simple example of rule induction:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{thm}\isamarkupfalse%
+\ ev{\isachardot}{\kern0pt}induct\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}ev\ n\ {\isasymLongrightarrow}\ evn\ n{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}induction\ rule{\isacharcolon}{\kern0pt}\ ev{\isachardot}{\kern0pt}induct{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}simp{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}simp{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+An induction on the computation of \isa{evn}:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{thm}\isamarkupfalse%
+\ evn{\isachardot}{\kern0pt}induct\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}evn\ n\ {\isasymLongrightarrow}\ ev\ n{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}induction\ n\ \ rule{\isacharcolon}{\kern0pt}\ evn{\isachardot}{\kern0pt}induct{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ ev{\isadigit{0}}{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ simp\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ evSS{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+No problem with termination
+because the premises are always smaller than the conclusion:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{thm}\isamarkupfalse%
+\ ev{\isachardot}{\kern0pt}intros\isanewline
+\isacommand{declare}\isamarkupfalse%
+\ ev{\isachardot}{\kern0pt}intros{\isacharbrackleft}{\kern0pt}simp{\isacharcomma}{\kern0pt}intro{\isacharbrackright}{\kern0pt}%
+\begin{isamarkuptext}%
+A shorter proof:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}evn\ n\ {\isasymLongrightarrow}\ ev\ n{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}induction\ n\ rule{\isacharcolon}{\kern0pt}\ evn{\isachardot}{\kern0pt}induct{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}simp{\isacharunderscore}{\kern0pt}all{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+The power of "arith":%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{lemma}\isamarkupfalse%
+\ {\isachardoublequoteopen}ev\ n\ {\isasymLongrightarrow}\ {\isasymexists}k{\isachardot}{\kern0pt}\ n\ {\isacharequal}{\kern0pt}\ {\isadigit{2}}{\isacharasterisk}{\kern0pt}k{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}induction\ rule{\isacharcolon}{\kern0pt}\ ev{\isachardot}{\kern0pt}induct{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}simp{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ arith\isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Inductive definition of the reflexive transitive closure%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{inductive}\isamarkupfalse%
+\isanewline
+\ \ star\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}{\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ bool{\isacharparenright}{\kern0pt}\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\isakeyword{for}\ r\ \isakeyword{where}\isanewline
+refl{\isacharcolon}{\kern0pt}\ \ {\isachardoublequoteopen}star\ r\ x\ x{\isachardoublequoteclose}\ {\isacharbar}{\kern0pt}\isanewline
+step{\isacharcolon}{\kern0pt}\ \ {\isachardoublequoteopen}r\ x\ y\ {\isasymLongrightarrow}\ star\ r\ y\ z\ {\isasymLongrightarrow}\ star\ r\ x\ z{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{print{\isacharunderscore}{\kern0pt}theorems}\isamarkupfalse%
+\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ star{\isachardot}{\kern0pt}induct\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ star{\isacharunderscore}{\kern0pt}trans{\isacharcolon}{\kern0pt}\isanewline
+\ \ {\isachardoublequoteopen}star\ r\ x\ y\ {\isasymLongrightarrow}\ star\ r\ y\ z\ {\isasymLongrightarrow}\ star\ r\ x\ z{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}induction\ rule{\isacharcolon}{\kern0pt}\ star{\isachardot}{\kern0pt}induct{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+\ assumption\isanewline
+\ \ \isacommand{apply}\isamarkupfalse%
+{\isacharparenleft}{\kern0pt}rename{\isacharunderscore}{\kern0pt}tac\ u\ x\ y{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}simp\ add{\isacharcolon}{\kern0pt}\ star{\isachardot}{\kern0pt}step{\isacharparenright}{\kern0pt}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+%
+\isadelimtheory
+\isanewline
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+\endinput
+%:%file=Inductive.tex%:%
+%:%10=1%:%
+%:%11=1%:%
+%:%12=2%:%
+%:%13=3%:%
+%:%27=5%:%
+%:%31=6%:%
+%:%41=8%:%
+%:%42=8%:%
+%:%43=9%:%
+%:%44=10%:%
+%:%45=11%:%
+%:%46=12%:%
+%:%47=12%:%
+%:%48=13%:%
+%:%49=13%:%
+%:%50=14%:%
+%:%51=14%:%
+%:%52=15%:%
+%:%53=15%:%
+%:%54=16%:%
+%:%55=17%:%
+%:%58=19%:%
+%:%60=21%:%
+%:%61=21%:%
+%:%68=22%:%
+%:%69=22%:%
+%:%70=23%:%
+%:%71=23%:%
+%:%72=24%:%
+%:%78=24%:%
+%:%81=25%:%
+%:%82=26%:%
+%:%83=26%:%
+%:%85=28%:%
+%:%87=30%:%
+%:%88=30%:%
+%:%89=31%:%
+%:%90=32%:%
+%:%91=33%:%
+%:%93=35%:%
+%:%95=37%:%
+%:%96=37%:%
+%:%97=38%:%
+%:%98=38%:%
+%:%101=39%:%
+%:%105=39%:%
+%:%106=39%:%
+%:%107=40%:%
+%:%108=40%:%
+%:%109=41%:%
+%:%110=41%:%
+%:%111=42%:%
+%:%121=44%:%
+%:%123=46%:%
+%:%124=46%:%
+%:%125=47%:%
+%:%126=47%:%
+%:%129=48%:%
+%:%133=48%:%
+%:%134=48%:%
+%:%135=49%:%
+%:%136=49%:%
+%:%137=50%:%
+%:%138=50%:%
+%:%139=51%:%
+%:%140=51%:%
+%:%141=52%:%
+%:%151=54%:%
+%:%152=55%:%
+%:%154=57%:%
+%:%155=57%:%
+%:%156=58%:%
+%:%157=58%:%
+%:%159=60%:%
+%:%161=62%:%
+%:%162=62%:%
+%:%165=63%:%
+%:%169=63%:%
+%:%170=63%:%
+%:%171=64%:%
+%:%172=64%:%
+%:%173=65%:%
+%:%183=67%:%
+%:%185=69%:%
+%:%186=69%:%
+%:%189=70%:%
+%:%193=70%:%
+%:%194=70%:%
+%:%195=71%:%
+%:%196=71%:%
+%:%197=72%:%
+%:%198=72%:%
+%:%199=73%:%
+%:%214=76%:%
+%:%224=78%:%
+%:%225=78%:%
+%:%226=79%:%
+%:%227=80%:%
+%:%228=81%:%
+%:%229=82%:%
+%:%230=83%:%
+%:%231=84%:%
+%:%232=84%:%
+%:%233=85%:%
+%:%234=85%:%
+%:%235=86%:%
+%:%236=87%:%
+%:%237=87%:%
+%:%238=88%:%
+%:%241=89%:%
+%:%245=89%:%
+%:%246=89%:%
+%:%247=90%:%
+%:%248=90%:%
+%:%249=91%:%
+%:%250=91%:%
+%:%251=92%:%
+%:%252=92%:%
+%:%257=92%:%
+%:%262=93%:%
+%:%267=94%:%

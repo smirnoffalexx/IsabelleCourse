@@ -54,8 +54,8 @@ lemma "(x::nat) + y = y + x"
 
 
 text \<open>
-  schematic_goal command used to state lemmas that involve schematic variables which may be
-  instantiated during their proofs. Used quite rarely.
+ \<open>schematic_goal command used to state lemmas that involve schematic variables which may be
+  instantiated during their proofs. Used quite rarely.\<close>
 \<close>
 
 thm TrueI
@@ -84,18 +84,18 @@ section \<open>Propositional logic\<close>
 
 subsection \<open>Basic rules\<close>
 
-text \<open> \<and> \<close>
+text \<open>\<open>\<and>\<close> \<close>
 thm conjI 
 thm conjE 
 thm conjunct1 conjunct2
 
-text \<open> \<or> \<close>
+text \<open>\<open>\<or>\<close> \<close>
 thm disjI1 
 thm disjI2 
 thm disjE
 thm disjCI
 
-text \<open> \<longrightarrow> \<close>
+text \<open>\<open> \<longrightarrow>\<close> \<close>
 thm impI impE
 
 subsection\<open>Examples\<close>
@@ -184,7 +184,7 @@ lemma "\<lbrakk> P \<and> Q; A \<and> B \<rbrakk> \<Longrightarrow> A"
   apply (erule conjE, assumption)
   done
 
-text\<open>OR: use rule_tac or erule_tac to instantiate the schematic variables of the rule\<close>
+text\<open>OR: use \<open>rule_tac or erule_tac\<close> to instantiate the schematic variables of the rule\<close>
 
 lemma "\<lbrakk> P \<and> Q; A \<and> B \<rbrakk> \<Longrightarrow> A"
   apply (erule_tac ?P=A and ?Q=B in conjE)
@@ -212,14 +212,14 @@ lemma "A \<longrightarrow> B = (B \<or> \<not> A)"
   done
 
 \<comment> \<open>more rules\<close>
-text\<open>\<longrightarrow>\<close>
+text\<open>\<open>\<longrightarrow>\<close>\<close>
 thm mp
 
-text \<open>\<not>\<close>
+text \<open>\<open>\<not>\<close>\<close>
 thm notI
 thm notE
 
-text \<open>True & False\<close>
+text \<open>True \<open>&\<close> False\<close>
 thm TrueI
 thm TrueE
 thm FalseE

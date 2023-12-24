@@ -35,9 +35,9 @@ term "(\<lambda>z. (\<lambda>x. f x z)) x"
 
 text \<open>example\<close>
 text 
-\<open>((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> c. (c b)) (\<lambda> a. a)) = ((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> a. a) b) =
+\<open>\<open>((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> c. (c b)) (\<lambda> a. a)) = ((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> a. a) b) =
 ((\<lambda> a. (\<lambda> b. b a) c) b) b = 
-((\<lambda> a. c a) b) b = c b b\<close>
+((\<lambda> a. c a) b) b = c b b\<close>\<close>
 
 text \<open>Isabelle performs this automatically:\<close>
 term "((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> c. (c b)) (\<lambda> a. a))"
@@ -105,9 +105,9 @@ lemma "mult c_1 x = x"
   apply (rule refl)
   done
 
-section "Simply Typed \<lambda>-calculus"
+section "Simply Typed \<open>\<lambda>-calculus\<close>"
 
-text \<open>Try \texttt{term "\<lambda> a. a a"}\<close>
+text \<open>Try \<open>\texttt{term "\<lambda> a. a a"}\<close>\<close>
 
 text \<open>
   An example with a free variable. In this case Isabelle infers the needed type of the

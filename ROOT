@@ -1,7 +1,12 @@
 chapter Tasks
 
 session Tasks (doc) = HOL +
+  options [
+    quick_and_dirty,
+    document = pdf,
+    document_output = "output"]
   sessions "Pure-ex"
+	"HOL-Library"
   theories [document = false]
     "Pure-ex.Guess"
   theories

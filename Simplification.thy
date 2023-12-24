@@ -2,7 +2,7 @@ theory Simplification
   imports Main
 begin
 
-text \<open>Given the simplification rules:
+text \<open>\<open>Given the simplification rules:
 0 + n = n                   (1)
 Suc m + n = Suc (m + n)     (2)
 (Suc m \<le> Suc n) = (m \<le> n)  (3)
@@ -14,7 +14,7 @@ Then 0 + Suc 0 \<le> Suc 0 + x is simplified to True as follows:
 (Suc 0 \<le> Suc 0 + x)       (2)
 (Suc 0 \<le> Suc (0 + x))     (3)
 (0 \<le> 0 + x)               (4)
-True
+True\<close>
 \<close>
 
 text \<open>implicit backtracking\<close>
@@ -139,16 +139,16 @@ lemma
   shows "(z \<odot> x) \<odot> (y \<odot> v) = t"
   apply (simp only: C)
   apply (simp only: A C)
-  text \<open>No confluence. We want v \<odot> (x \<odot> (y \<odot> z)) but got v \<odot> (y \<odot> (x \<odot> z))\<close>
+  text \<open>No confluence. We want \<open>v \<odot> (x \<odot> (y \<odot> z)) but got v \<odot> (y \<odot> (x \<odot> z))\<close>\<close>
   apply (simp only: AC)
   oops
 
 text \<open>when all else fails: tracing the simplifier
 
 typing
-  declare [[simp_trace]]        turns tracing on,
-  declare [[simp_trace=false]]  turns tracing off
-(within a proof, write 'using' rather than 'declare')
+  declare \<open>[[simp_trace]]\<close>        turns tracing on,
+  declare \<open>[[simp_trace=false]]\<close>  turns tracing off
+(within a proof, write \<open>'using'\<close> rather than \<open>'declare'\<close>)
 \<close>
 
 declare [[simp_trace]]

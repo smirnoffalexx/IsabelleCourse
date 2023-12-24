@@ -62,7 +62,7 @@ datatype
   ref = Class | Array ty
 
 
-section \<open>Primitive recursion & Functions\<close>
+section \<open>Primitive recursion and Functions\<close>
 
 text\<open>Non-recursive functions\<close>
 definition sq :: "nat \<Rightarrow> nat" where
@@ -73,7 +73,7 @@ abbreviation sq' :: "nat \<Rightarrow> nat" where
 
 thm sq_def
 
-text \<open>but there is no such a thm sq'_def\<close>
+text \<open>but there is no such a \<open>thm sq'_def\<close>\<close>
 (* thm sq'_def *)
 
 primrec add :: "nat \<Rightarrow> nat \<Rightarrow> nat" where

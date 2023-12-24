@@ -20,7 +20,7 @@ done
 
 text\<open>Derive the axiom of choice from the SOME operator (using the rule someI), i.e.
 using only the rules: allI, allE, exI, exE and someI; with only the
-proof methods: rule, erule, rule_tac, erule_tac and assumption, prove:\<close>
+proof methods: rule, erule, \<open>rule_tac, erule_tac\<close> and assumption, prove:\<close>
 
 lemma choice:
   "\<forall>x. \<exists>y. R x y \<Longrightarrow> \<exists>f. \<forall>x. R x (f x)"
@@ -34,9 +34,9 @@ lemma choice:
 
 subsection HOL
 
-text \<open>You can find definition of HOL at $ISABELLE_HOME/src/HOL/HOL.thy\<close>
+text \<open>You can find definition of HOL at \<open>$ISABELLE_HOME/src/HOL/HOL.thy\<close>\<close>
 
-text\<open>we want to show "\<lbrakk> P \<longrightarrow> Q; P; Q \<Longrightarrow> R \<rbrakk> \<Longrightarrow> R"\<close>
+text\<open>\<open>we want to show "\<lbrakk> P \<longrightarrow> Q; P; Q \<Longrightarrow> R \<rbrakk> \<Longrightarrow> R"\<close>\<close>
 lemma impE:
   assumes PQ: "P \<longrightarrow> Q"
   assumes P: "P"

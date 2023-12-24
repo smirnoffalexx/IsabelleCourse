@@ -1,0 +1,642 @@
+%
+\begin{isabellebody}%
+\setisabellecontext{Locales}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{theory}\isamarkupfalse%
+\ Locales\isanewline
+\ \ \isakeyword{imports}\ {\isachardoublequoteopen}HOL{\isacharminus}{\kern0pt}Library{\isachardot}{\kern0pt}Countable{\isacharunderscore}{\kern0pt}Set{\isachardoublequoteclose}\ \isanewline
+\isakeyword{begin}%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsection{Locales%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\begin{isamarkuptext}%
+Locales are based on context . 
+A context is a formula scheme  \isa{{\isasymAnd}\ x\isactrlsub {\isadigit{1}}\ {\isachardot}{\kern0pt}\ {\isachardot}{\kern0pt}\ {\isachardot}{\kern0pt}\ x\isactrlsub n\ {\isachardot}{\kern0pt}\ {\isacharbrackleft}{\kern0pt}{\isacharbrackleft}{\kern0pt}\ A\isactrlsub {\isadigit{1}}\ {\isacharsemicolon}{\kern0pt}\ {\isachardot}{\kern0pt}\ {\isachardot}{\kern0pt}\ {\isachardot}{\kern0pt}\ {\isacharsemicolon}{\kern0pt}A\isactrlsub m\ {\isacharbrackright}{\kern0pt}{\isacharbrackright}{\kern0pt}\ {\isasymLongrightarrow}\ {\isachardot}{\kern0pt}\ {\isachardot}{\kern0pt}\ {\isachardot}{\kern0pt}}%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{locale}\isamarkupfalse%
+\ partial{\isacharunderscore}{\kern0pt}order\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \isakeyword{fixes}\ le\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\ {\isacharparenleft}{\kern0pt}\isakeyword{infixl}\ {\isachardoublequoteopen}{\isasymsqsubseteq}{\isachardoublequoteclose}\ {\isadigit{5}}{\isadigit{0}}{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isakeyword{assumes}\ refl\ {\isacharbrackleft}{\kern0pt}intro{\isacharcomma}{\kern0pt}\ simp{\isacharbrackright}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}x\ {\isasymsqsubseteq}\ x{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isakeyword{and}\ anti{\isacharunderscore}{\kern0pt}sym\ {\isacharbrackleft}{\kern0pt}intro{\isacharbrackright}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isasymlbrakk}\ x\ {\isasymsqsubseteq}\ y{\isacharsemicolon}{\kern0pt}\ y\ {\isasymsqsubseteq}\ x\ {\isasymrbrakk}\ {\isasymLongrightarrow}\ x\ {\isacharequal}{\kern0pt}\ y{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isakeyword{and}\ trans\ {\isacharbrackleft}{\kern0pt}trans{\isacharbrackright}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isasymlbrakk}\ x\ {\isasymsqsubseteq}\ y{\isacharsemicolon}{\kern0pt}\ y\ {\isasymsqsubseteq}\ z\ {\isasymrbrakk}\ {\isasymLongrightarrow}\ x\ {\isasymsqsubseteq}\ z{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+The parameter of this locale is le, which is a binary predicate with infix syntax \isa{{\isasymsqsubseteq}}. 
+The parameter syntax is available in the subsequent assumptions,
+which are the familiar partial order axioms.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{print{\isacharunderscore}{\kern0pt}locales}\isamarkupfalse%
+\isanewline
+\isanewline
+\isacommand{print{\isacharunderscore}{\kern0pt}locale}\isamarkupfalse%
+{\isacharbang}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order%
+\begin{isamarkuptext}%
+The assumptions have turned into conclusions, denoted by the keyword notes. 
+Also, there is only one assumption - \isa{partial{\isacharunderscore}{\kern0pt}order}. 
+The locale declaration has introduced the predicate \isa{partial{\isacharunderscore}{\kern0pt}order} to the theory. 
+This predicate is the locale predicate.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{thm}\isamarkupfalse%
+\ partial{\isacharunderscore}{\kern0pt}order{\isacharunderscore}{\kern0pt}def\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}trans\ partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}anti{\isacharunderscore}{\kern0pt}sym\ partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}refl%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Extending Locales%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{definition}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}\isakeyword{in}\ partial{\isacharunderscore}{\kern0pt}order{\isacharparenright}{\kern0pt}\isanewline
+less\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ {\isacharprime}{\kern0pt}a\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\ {\isacharparenleft}{\kern0pt}\isakeyword{infixl}\ {\isachardoublequoteopen}{\isasymsqsubset}{\isachardoublequoteclose}\ {\isadigit{5}}{\isadigit{0}}{\isacharparenright}{\kern0pt}\ \isanewline
+\ \ \isakeyword{where}\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}x\ {\isasymsqsubset}\ y{\isacharparenright}{\kern0pt}\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}x\ {\isasymsqsubseteq}\ y\ {\isasymand}\ x\ {\isasymnoteq}\ y{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}%
+\begin{isamarkuptext}%
+The definition generates a foundational constant \isa{partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}less{\isacharcolon}{\kern0pt}}%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{thm}\isamarkupfalse%
+\ partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}less{\isacharunderscore}{\kern0pt}def%
+\begin{isamarkuptext}%
+At the same time, the locale is extended by syntax transformations hiding
+this construction in the context of the locale.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{print{\isacharunderscore}{\kern0pt}locale}\isamarkupfalse%
+{\isacharbang}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}\isakeyword{in}\ partial{\isacharunderscore}{\kern0pt}order{\isacharparenright}{\kern0pt}\ less{\isacharunderscore}{\kern0pt}le{\isacharunderscore}{\kern0pt}trans\ {\isacharbrackleft}{\kern0pt}trans{\isacharbrackright}{\kern0pt}{\isacharcolon}{\kern0pt}\isanewline
+\ \ {\isachardoublequoteopen}{\isasymlbrakk}\ x\ {\isasymsqsubset}\ y{\isacharsemicolon}{\kern0pt}\ y\ {\isasymsqsubseteq}\ z\ {\isasymrbrakk}\ {\isasymLongrightarrow}\ x\ {\isasymsqsubset}\ z{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{unfolding}\isamarkupfalse%
+\ less{\isacharunderscore}{\kern0pt}def\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}blast\ intro{\isacharcolon}{\kern0pt}\ trans{\isacharparenright}{\kern0pt}%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{context n begin ... end%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\begin{isamarkuptext}%
+Entering locale context:%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{context}\isamarkupfalse%
+\ partial{\isacharunderscore}{\kern0pt}order\isanewline
+\isanewline
+\isakeyword{begin}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\isanewline
+\ \ is{\isacharunderscore}{\kern0pt}inf\ \isakeyword{where}\ {\isachardoublequoteopen}is{\isacharunderscore}{\kern0pt}inf\ x\ y\ i\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}i\ {\isasymsqsubseteq}\ x\ {\isasymand}\ i\ {\isasymsqsubseteq}\ y\ {\isasymand}\ {\isacharparenleft}{\kern0pt}{\isasymforall}\ z{\isachardot}{\kern0pt}\ z\ {\isasymsqsubseteq}\ x\ {\isasymand}\ z\ {\isasymsqsubseteq}\ y\ {\isasymlongrightarrow}\ z\ {\isasymsqsubseteq}\ i{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\isanewline
+\ \ is{\isacharunderscore}{\kern0pt}sup\ \isakeyword{where}\ {\isachardoublequoteopen}is{\isacharunderscore}{\kern0pt}sup\ x\ y\ s\ {\isacharequal}{\kern0pt}\isanewline
+\ \ \ \ \ \ \ \ \ {\isacharparenleft}{\kern0pt}x\ {\isasymsqsubseteq}\ s\ {\isasymand}\ y\ {\isasymsqsubseteq}\ s\ {\isasymand}\ {\isacharparenleft}{\kern0pt}{\isasymforall}\ z{\isachardot}{\kern0pt}\ x\ {\isasymsqsubseteq}\ z\ {\isasymand}\ y\ {\isasymsqsubseteq}\ z\ {\isasymlongrightarrow}\ s\ {\isasymsqsubseteq}\ z{\isacharparenright}{\kern0pt}{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{theorem}\isamarkupfalse%
+\ is{\isacharunderscore}{\kern0pt}inf{\isacharunderscore}{\kern0pt}uniq{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isasymlbrakk}is{\isacharunderscore}{\kern0pt}inf\ x\ y\ i{\isacharsemicolon}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}inf\ x\ y\ i{\isacharprime}{\kern0pt}{\isasymrbrakk}\ {\isasymLongrightarrow}\ i\ {\isacharequal}{\kern0pt}\ i{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{oops}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isacommand{theorem}\isamarkupfalse%
+\ is{\isacharunderscore}{\kern0pt}sup{\isacharunderscore}{\kern0pt}uniq{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isasymlbrakk}is{\isacharunderscore}{\kern0pt}sup\ x\ y\ s{\isacharsemicolon}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}sup\ x\ y\ s{\isacharprime}{\kern0pt}{\isasymrbrakk}\ {\isasymLongrightarrow}\ s\ {\isacharequal}{\kern0pt}\ s{\isacharprime}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{oops}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{end}\isamarkupfalse%
+\isanewline
+\isanewline
+\isacommand{print{\isacharunderscore}{\kern0pt}locale}\isamarkupfalse%
+{\isacharbang}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Import%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+\isacommand{locale}\isamarkupfalse%
+\ total{\isacharunderscore}{\kern0pt}order\ {\isacharequal}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\ {\isacharplus}{\kern0pt}\isanewline
+\ \ \isakeyword{assumes}\ total{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}x\ {\isasymsqsubseteq}\ y\ {\isasymor}\ y\ {\isasymsqsubseteq}\ x{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{locale}\isamarkupfalse%
+\ lattice\ {\isacharequal}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\ {\isacharplus}{\kern0pt}\isanewline
+\ \ \isakeyword{assumes}\ ex{\isacharunderscore}{\kern0pt}inf{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isasymexists}\ inf{\isachardot}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}inf\ x\ y\ inf{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isakeyword{and}\ ex{\isacharunderscore}{\kern0pt}sup{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}{\isasymexists}\ sup{\isachardot}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}sup\ x\ y\ sup{\isachardoublequoteclose}\isanewline
+\isakeyword{begin}\isanewline
+\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ meet\ {\isacharparenleft}{\kern0pt}\isakeyword{infixl}\ {\isachardoublequoteopen}{\isasymsqinter}{\isachardoublequoteclose}\ {\isadigit{7}}{\isadigit{0}}{\isacharparenright}{\kern0pt}\ \isakeyword{where}\ {\isachardoublequoteopen}x\ {\isasymsqinter}\ y\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}THE\ inf{\isachardot}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}inf\ x\ y\ inf{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isacommand{definition}\isamarkupfalse%
+\ join\ {\isacharparenleft}{\kern0pt}\isakeyword{infixl}\ {\isachardoublequoteopen}{\isasymsqunion}{\isachardoublequoteclose}\ {\isadigit{6}}{\isadigit{5}}{\isacharparenright}{\kern0pt}\ \isakeyword{where}\ {\isachardoublequoteopen}x\ {\isasymsqunion}\ y\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}THE\ sup{\isachardot}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}sup\ x\ y\ sup{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\isanewline
+\isacommand{lemma}\isamarkupfalse%
+\ meet{\isacharunderscore}{\kern0pt}left{\isacharcolon}{\kern0pt}\ {\isachardoublequoteopen}x\ {\isasymsqinter}\ y\ {\isasymsqsubseteq}\ x{\isachardoublequoteclose}%
+\isadelimproof
+\ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{oops}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+\isanewline
+\isanewline
+\isacommand{end}\isamarkupfalse%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\isatagdocument
+%
+\isamarkupsubsection{Interpretation%
+}
+\isamarkuptrue%
+%
+\endisatagdocument
+{\isafolddocument}%
+%
+\isadelimdocument
+%
+\endisadelimdocument
+%
+\begin{isamarkuptext}%
+The declaration sublocale \isa{l{\isadigit{1}}\ {\isasymsubseteq}\ l{\isadigit{2}}} causes locale l2 to be interpreted in the context of l1. 
+This means that all conclusions of l2 are made available in l1.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{sublocale}\isamarkupfalse%
+\ total{\isacharunderscore}{\kern0pt}order\ {\isasymsubseteq}\ lattice%
+\begin{isamarkuptext}%
+The sublocale command generates a goal, which must be discharged by the user:%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ unfold{\isacharunderscore}{\kern0pt}locales\ \isanewline
+\ \ \isacommand{fix}\isamarkupfalse%
+\ x\ y\isanewline
+\ \ \isacommand{thm}\isamarkupfalse%
+\ is{\isacharunderscore}{\kern0pt}inf{\isacharunderscore}{\kern0pt}def\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ total\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}is{\isacharunderscore}{\kern0pt}inf\ x\ y\ {\isacharparenleft}{\kern0pt}if\ x\ {\isasymsqsubseteq}\ y\ then\ x\ else\ y{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}auto\ simp{\isacharcolon}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}inf{\isacharunderscore}{\kern0pt}def{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{thus}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymexists}\ inf{\isachardot}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}inf\ x\ y\ inf{\isachardoublequoteclose}\ \isacommand{{\isachardot}{\kern0pt}{\isachardot}{\kern0pt}}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{from}\isamarkupfalse%
+\ total\ \isacommand{have}\isamarkupfalse%
+\ {\isachardoublequoteopen}is{\isacharunderscore}{\kern0pt}sup\ x\ y\ {\isacharparenleft}{\kern0pt}if\ x\ {\isasymsqsubseteq}\ y\ then\ y\ else\ x{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\ \isacommand{by}\isamarkupfalse%
+\ {\isacharparenleft}{\kern0pt}auto\ simp{\isacharcolon}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}sup{\isacharunderscore}{\kern0pt}def{\isacharparenright}{\kern0pt}\isanewline
+\ \ \isacommand{thus}\isamarkupfalse%
+\ {\isachardoublequoteopen}{\isasymexists}\ sup{\isachardot}{\kern0pt}\ is{\isacharunderscore}{\kern0pt}sup\ x\ y\ sup{\isachardoublequoteclose}\ \isacommand{{\isachardot}{\kern0pt}{\isachardot}{\kern0pt}}\isamarkupfalse%
+\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+The command interpretation is for the interpretation of locale in theories.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+In the following example, the parameter of locale \isa{partial{\isacharunderscore}{\kern0pt}order} is replaced
+by \isa{{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}} and the locale instance is interpreted in the current theory.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{interpretation}\isamarkupfalse%
+\ int{\isacharcolon}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ int\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+\ \ %
+\endisadelimproof
+%
+\isatagproof
+\isacommand{apply}\isamarkupfalse%
+\ unfold{\isacharunderscore}{\kern0pt}locales\ \isanewline
+\ \ \ \ \isacommand{apply}\isamarkupfalse%
+\ auto\ \isanewline
+\ \ \isacommand{done}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+\isanewline
+%
+\endisadelimproof
+\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ int{\isachardot}{\kern0pt}trans\isanewline
+\isacommand{thm}\isamarkupfalse%
+\ int{\isachardot}{\kern0pt}less{\isacharunderscore}{\kern0pt}def%
+\begin{isamarkuptext}%
+We want to replace int.less by \isa{{\isacharless}{\kern0pt}}.%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\begin{isamarkuptext}%
+In order to allow for the desired replacement,
+interpretation accepts equations in addition to the parameter instantiation. 
+These follow the locale expression and are indicated with the keyword rewrites.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{interpretation}\isamarkupfalse%
+\ int{\isacharcolon}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isacharbrackleft}{\kern0pt}int{\isacharcomma}{\kern0pt}\ int{\isacharbrackright}{\kern0pt}\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{rewrites}\ {\isachardoublequoteopen}int{\isachardot}{\kern0pt}less\ x\ y\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}x\ {\isacharless}{\kern0pt}\ y{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+{\isacharminus}{\kern0pt}\isanewline
+\ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}partial{\isacharunderscore}{\kern0pt}order\ {\isacharparenleft}{\kern0pt}{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ int\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ bool{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ unfold{\isacharunderscore}{\kern0pt}locales\ auto\isanewline
+\ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}less\ {\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ x\ y\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}x\ {\isacharless}{\kern0pt}\ y{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{unfolding}\isamarkupfalse%
+\ partial{\isacharunderscore}{\kern0pt}order{\isachardot}{\kern0pt}less{\isacharunderscore}{\kern0pt}def\ {\isacharbrackleft}{\kern0pt}OF\ {\isacartoucheopen}\ partial{\isacharunderscore}{\kern0pt}order\ {\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacartoucheclose}{\isacharbrackright}{\kern0pt}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+In the above example, the fact that \isa{{\isasymle}} is a partial order for the integers
+was used in the second goal to discharge the premise in the definition of \isa{{\isasymsqsubseteq}}.
+In general, proofs of the equations not only may involve definitions from the
+interpreted locale but arbitrarily complex arguments in the context of the
+locale. Therefore it would be convenient to have the interpreted locale conclusions temporarily available in the proof. 
+This can be achieved by a locale interpretation in the proof body. The command for local interpretations is
+interpret.%
+\end{isamarkuptext}\isamarkuptrue%
+\isacommand{interpretation}\isamarkupfalse%
+\ int{\isacharcolon}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ int\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\isanewline
+\ \ \isakeyword{rewrites}\ {\isachardoublequoteopen}int{\isachardot}{\kern0pt}less\ x\ y\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}x\ {\isacharless}{\kern0pt}\ y{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\isatagproof
+\isacommand{proof}\isamarkupfalse%
+\ {\isacharminus}{\kern0pt}\isanewline
+\ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}partial{\isacharunderscore}{\kern0pt}order\ {\isacharparenleft}{\kern0pt}{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ int\ {\isasymRightarrow}\ int\ {\isasymRightarrow}\ bool{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{by}\isamarkupfalse%
+\ unfold{\isacharunderscore}{\kern0pt}locales\ auto\isanewline
+\ \ \isacommand{then}\isamarkupfalse%
+\ \isacommand{interpret}\isamarkupfalse%
+\ int{\isacharcolon}{\kern0pt}\ partial{\isacharunderscore}{\kern0pt}order\ {\isachardoublequoteopen}{\isacharparenleft}{\kern0pt}{\isasymle}{\isacharparenright}{\kern0pt}\ {\isacharcolon}{\kern0pt}{\isacharcolon}{\kern0pt}\ {\isacharbrackleft}{\kern0pt}int{\isacharcomma}{\kern0pt}\ int{\isacharbrackright}{\kern0pt}\ {\isasymRightarrow}\ bool{\isachardoublequoteclose}\ \isacommand{{\isachardot}{\kern0pt}}\isamarkupfalse%
+\isanewline
+\ \ \isacommand{show}\isamarkupfalse%
+\ {\isachardoublequoteopen}int{\isachardot}{\kern0pt}less\ x\ y\ {\isacharequal}{\kern0pt}\ {\isacharparenleft}{\kern0pt}x\ {\isacharless}{\kern0pt}\ y{\isacharparenright}{\kern0pt}{\isachardoublequoteclose}\isanewline
+\ \ \ \ \isacommand{unfolding}\isamarkupfalse%
+\ int{\isachardot}{\kern0pt}less{\isacharunderscore}{\kern0pt}def\ \isacommand{by}\isamarkupfalse%
+\ auto\isanewline
+\isacommand{qed}\isamarkupfalse%
+%
+\endisatagproof
+{\isafoldproof}%
+%
+\isadelimproof
+%
+\endisadelimproof
+%
+\begin{isamarkuptext}%
+theorems from the local interpretation disappear after leaving the proof context — that is,
+after the succeeding next or qed statement%
+\end{isamarkuptext}\isamarkuptrue%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\isatagtheory
+\isacommand{end}\isamarkupfalse%
+%
+\endisatagtheory
+{\isafoldtheory}%
+%
+\isadelimtheory
+%
+\endisadelimtheory
+%
+\end{isabellebody}%
+\endinput
+%:%file=Locales.tex%:%
+%:%10=1%:%
+%:%11=1%:%
+%:%12=2%:%
+%:%13=3%:%
+%:%27=5%:%
+%:%39=8%:%
+%:%40=9%:%
+%:%42=12%:%
+%:%43=12%:%
+%:%44=13%:%
+%:%45=14%:%
+%:%46=15%:%
+%:%47=16%:%
+%:%49=19%:%
+%:%50=20%:%
+%:%51=21%:%
+%:%53=24%:%
+%:%54=24%:%
+%:%55=25%:%
+%:%56=26%:%
+%:%57=26%:%
+%:%59=29%:%
+%:%60=30%:%
+%:%61=31%:%
+%:%62=32%:%
+%:%64=35%:%
+%:%65=35%:%
+%:%66=36%:%
+%:%67=36%:%
+%:%74=38%:%
+%:%84=40%:%
+%:%85=40%:%
+%:%86=41%:%
+%:%87=42%:%
+%:%89=45%:%
+%:%91=47%:%
+%:%92=47%:%
+%:%94=49%:%
+%:%95=50%:%
+%:%97=52%:%
+%:%98=52%:%
+%:%99=53%:%
+%:%100=54%:%
+%:%101=54%:%
+%:%102=55%:%
+%:%105=56%:%
+%:%109=56%:%
+%:%110=56%:%
+%:%111=56%:%
+%:%125=58%:%
+%:%137=60%:%
+%:%139=62%:%
+%:%140=62%:%
+%:%141=63%:%
+%:%142=64%:%
+%:%143=65%:%
+%:%144=66%:%
+%:%145=66%:%
+%:%146=67%:%
+%:%147=68%:%
+%:%148=69%:%
+%:%149=70%:%
+%:%150=70%:%
+%:%151=71%:%
+%:%152=72%:%
+%:%153=73%:%
+%:%154=74%:%
+%:%155=74%:%
+%:%158=75%:%
+%:%162=75%:%
+%:%168=75%:%
+%:%171=76%:%
+%:%172=76%:%
+%:%175=77%:%
+%:%179=77%:%
+%:%185=77%:%
+%:%188=78%:%
+%:%189=79%:%
+%:%190=79%:%
+%:%191=80%:%
+%:%192=81%:%
+%:%193=81%:%
+%:%200=83%:%
+%:%210=85%:%
+%:%211=85%:%
+%:%212=86%:%
+%:%213=87%:%
+%:%214=88%:%
+%:%215=88%:%
+%:%216=89%:%
+%:%217=90%:%
+%:%218=91%:%
+%:%219=92%:%
+%:%220=93%:%
+%:%221=93%:%
+%:%222=94%:%
+%:%223=94%:%
+%:%224=95%:%
+%:%225=96%:%
+%:%226=96%:%
+%:%228=96%:%
+%:%232=96%:%
+%:%240=96%:%
+%:%241=97%:%
+%:%242=98%:%
+%:%250=100%:%
+%:%262=103%:%
+%:%263=104%:%
+%:%265=106%:%
+%:%266=106%:%
+%:%268=107%:%
+%:%276=108%:%
+%:%277=108%:%
+%:%278=109%:%
+%:%279=109%:%
+%:%280=110%:%
+%:%281=110%:%
+%:%282=111%:%
+%:%283=111%:%
+%:%284=111%:%
+%:%285=111%:%
+%:%286=112%:%
+%:%287=112%:%
+%:%288=112%:%
+%:%289=113%:%
+%:%290=113%:%
+%:%291=113%:%
+%:%292=113%:%
+%:%293=114%:%
+%:%294=114%:%
+%:%295=114%:%
+%:%296=115%:%
+%:%306=119%:%
+%:%310=121%:%
+%:%311=122%:%
+%:%313=125%:%
+%:%314=125%:%
+%:%317=126%:%
+%:%321=126%:%
+%:%322=126%:%
+%:%323=127%:%
+%:%324=127%:%
+%:%325=128%:%
+%:%331=128%:%
+%:%334=129%:%
+%:%335=130%:%
+%:%336=130%:%
+%:%337=131%:%
+%:%338=131%:%
+%:%340=134%:%
+%:%344=138%:%
+%:%345=139%:%
+%:%346=140%:%
+%:%348=143%:%
+%:%349=143%:%
+%:%350=144%:%
+%:%351=145%:%
+%:%351=146%:%
+%:%358=147%:%
+%:%359=147%:%
+%:%360=148%:%
+%:%361=148%:%
+%:%362=149%:%
+%:%363=149%:%
+%:%364=150%:%
+%:%365=150%:%
+%:%366=151%:%
+%:%367=151%:%
+%:%368=152%:%
+%:%369=152%:%
+%:%370=153%:%
+%:%380=156%:%
+%:%381=157%:%
+%:%382=158%:%
+%:%383=159%:%
+%:%384=160%:%
+%:%385=161%:%
+%:%386=162%:%
+%:%388=165%:%
+%:%389=165%:%
+%:%390=166%:%
+%:%397=167%:%
+%:%398=167%:%
+%:%399=168%:%
+%:%400=168%:%
+%:%401=169%:%
+%:%402=169%:%
+%:%403=170%:%
+%:%404=170%:%
+%:%405=170%:%
+%:%406=170%:%
+%:%407=171%:%
+%:%408=171%:%
+%:%409=172%:%
+%:%410=172%:%
+%:%411=172%:%
+%:%412=173%:%
+%:%422=176%:%
+%:%423=177%:%
+%:%431=180%:%
