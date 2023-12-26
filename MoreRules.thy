@@ -199,7 +199,7 @@ lemma "(\<forall>x. P x \<longrightarrow> Q) = ((\<exists>x. P x) \<longrightarr
 
 text \<open>Exercises\<close>
 text \<open>Prove using the xor definition and 
-the proof methods: rule, erule, rule_tac, erule_tac and assumption:\<close>
+the proof methods: \<open>rule, erule, rule_tac, erule_tac\<close> and assumption:\<close>
 lemma "xor A B = xor B A"
   oops
 

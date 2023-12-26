@@ -10,7 +10,7 @@ text \<open>This is also a comment but it generates nice \LaTeX-text!\<close>
 
 text \<open>Command @{command thy_deps} demonstrates a graph of dependecies between Isabelle/HOL theories:\<close>
 
-subsection \<open>Terms & Types\<close>
+subsection \<open>Terms \<open>&\<close> Types\<close>
 text \<open>
  Note that free variables (eg @{term x}), 
  bound variables (eg @{term "\<lambda>n. n"}) and

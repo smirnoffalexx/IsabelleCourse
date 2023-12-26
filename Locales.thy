@@ -27,8 +27,8 @@ print_locale! partial_order
 
 text \<open>
 The assumptions have turned into conclusions, denoted by the keyword notes. 
-Also, there is only one assumption - partial_order. 
-The locale declaration has introduced the predicate partial_order to the theory. 
+Also, there is only one assumption - \<open>partial_order\<close>. 
+The locale declaration has introduced the predicate \<open>partial_order\<close> to the theory. 
 This predicate is the locale predicate.
 \<close>
 
@@ -42,7 +42,7 @@ less :: "'a \<Rightarrow> 'a \<Rightarrow> bool" (infixl "\<sqsubset>" 50)
   where "(x \<sqsubset> y) = (x \<sqsubseteq> y \<and> x \<noteq> y)"
 
 text\<open>
-The definition generates a foundational constant partial_order.less:\<close>
+The definition generates a foundational constant \<open>partial_order.less:\<close>\<close>
 
 thm partial_order.less_def
 
@@ -100,7 +100,7 @@ end
 subsection \<open>Interpretation\<close>
 
 text \<open>
-The declaration sublocale l1 \<subseteq> l2 causes locale l2 to be interpreted in the context of l1. 
+The declaration sublocale \<open>l1 \<subseteq> l2\<close> causes locale l2 to be interpreted in the context of l1. 
 This means that all conclusions of l2 are made available in l1.\<close>
 
 sublocale total_order \<subseteq> lattice
@@ -118,8 +118,8 @@ qed
 text\<open>
 The command interpretation is for the interpretation of locale in theories.\<close>
 
-text\<open>In the following example, the parameter of locale partial_order is replaced
-by (\<le>) and the locale instance is interpreted in the current theory.
+text\<open>In the following example, the parameter of locale \<open>partial_order\<close> is replaced
+by \<open>(\<le>)\<close> and the locale instance is interpreted in the current theory.
 \<close>
 
 interpretation int: partial_order "(\<le>) :: int \<Rightarrow> int \<Rightarrow> bool"
