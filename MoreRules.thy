@@ -96,7 +96,7 @@ apply(erule_tac x=y in allE)
 apply assumption
   done
 
-text\<open>where and of attributes\<close>
+text\<open>\<open>where\<close> and \<open>of\<close> attributes\<close>
 
 thm conjI
 thm conjI [of "A"]
@@ -110,7 +110,7 @@ apply(erule conjE[where P = "C" and Q="D"])
 apply assumption
 done
 
-text\<open>Forward reasoning: drule/frule\<close>
+text\<open>Forward reasoning: \<open>drule/frule\<close>\<close>
 
 lemma "A \<and> B \<Longrightarrow> \<not> \<not> A"
   thm conjunct1
@@ -123,7 +123,6 @@ apply (erule notE)
 apply assumption
 done
 
-
 lemma "\<forall>x. P x \<Longrightarrow> P t \<and> P t'"
 thm spec
 apply (frule_tac x="t" in spec)
@@ -133,7 +132,7 @@ apply (rule conjI)
 apply assumption
 done
 
-text\<open>OF and THEN attributes\<close>
+text\<open>\<open>OF\<close> and \<open>THEN\<close> attributes\<close>
 
 thm dvd_add dvd_refl
 thm dvd_add [OF dvd_refl]
@@ -197,7 +196,7 @@ lemma "(\<forall>x. P x \<longrightarrow> Q) = ((\<exists>x. P x) \<longrightarr
   apply assumption
   done
 
-text \<open>Exercises\<close>
+text \<open>Exercises:\<close>
 text \<open>Prove using the xor definition and 
 the proof methods: \<open>rule, erule, rule_tac, erule_tac\<close> and assumption:\<close>
 lemma "xor A B = xor B A"

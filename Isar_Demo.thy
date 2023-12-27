@@ -1,8 +1,8 @@
+section Isar
+
 theory Isar_Demo
 imports Complex_Main
 begin
-
-section Isar
 
 text \<open>An introductory example\<close>
 

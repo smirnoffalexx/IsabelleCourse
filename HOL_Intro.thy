@@ -1,8 +1,8 @@
-theory HOL_Intro 
+section \<open>HOL\<close>
+
+theory HOL_Intro
   imports Main 
 begin
-
-section \<open>HOL\<close>
 
 subsection Epsilon
 
@@ -18,7 +18,7 @@ apply (rule_tac x="SOME x. P x" in exI)
 apply assumption
 done 
 
-text\<open>Derive the axiom of choice from the SOME operator (using the rule someI), i.e.
+text\<open>Deriving the axiom of choice from the SOME operator (using the rule someI), i.e.
 using only the rules: allI, allE, exI, exE and someI; with only the
 proof methods: rule, erule, \<open>rule_tac, erule_tac\<close> and assumption, prove:\<close>
 
@@ -56,11 +56,11 @@ section \<open>Simplification\<close>
 
 text \<open>
 Lists:
-  @{term "[]"}       empty list
-  @{term "x#xs"}     cons (list with head x and tail xs)
-  @{term "xs @ ys"}  append xs and ys
+  @{term "[]"} is empty list,
+  @{term "x#xs"} is cons (list with head x and tail xs),
+  @{term "xs @ ys"} appends xs and ys
 
-datatype 'a list = Nil | Cons 'a ('a list)
+\<open>datatype 'a list = Nil | Cons 'a ('a list)\<close>
 \<close>
 
 print_simpset
