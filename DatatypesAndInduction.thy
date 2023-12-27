@@ -1,8 +1,9 @@
+section \<open>Types Declaration\<close>
+
 theory DatatypesAndInduction
   imports Main
 begin
 
-section \<open>Types Declaration\<close>
 type_synonym string = "char list"
 
 typedecl myType
@@ -117,7 +118,6 @@ where
   "has_int_ref Class     = False" |
   "has_int_ref (Array T) = has_int T"
 
-\<comment> \<open>------------------------------------------------------------\<close>
 
 section \<open>Structural induction\<close>
 
@@ -211,7 +211,7 @@ lemma "itrev xs [] = rev xs"
   apply (clarsimp simp: itrev_rev_app)
   done
 
-\<comment> \<open>----------------------------------------------------------\<close>
+text \<open>----------------------------------------------------------\<close>
 
 primrec
   lsum :: "nat list \<Rightarrow> nat"

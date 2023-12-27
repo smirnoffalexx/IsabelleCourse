@@ -1,10 +1,10 @@
-section \<open>Lambda Сalculus\<close>
+section \<open>Lambda Calculus\<close>
 
 theory Lambda
   imports Main 
 begin
 
-text "lambda terms"
+text "Lambda terms:"
 
 term "\<lambda>x. x + 3"
 
@@ -33,7 +33,7 @@ text \<open>beta with renaming\<close>
 
 term "(\<lambda>z. (\<lambda>x. f x z)) x"
 
-text \<open>example\<close>
+text \<open>Example:\<close>
 text 
 \<open>\<open>((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> c. (c b)) (\<lambda> a. a)) = ((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> a. a) b) =
 ((\<lambda> a. (\<lambda> b. b a) c) b) b = 
@@ -42,7 +42,7 @@ text
 text \<open>Isabelle performs this automatically:\<close>
 term "((\<lambda> a. (\<lambda> b. b a) c) b) ((\<lambda> c. (c b)) (\<lambda> a. a))"
 
-text "basic definitions"
+text "Basic definitions with lambda:"
 
 definition
   succ :: "(('a \<Rightarrow> 'a) \<Rightarrow> 'a \<Rightarrow> 'a) \<Rightarrow> ('a \<Rightarrow> 'a) \<Rightarrow> 'a \<Rightarrow> 'a" where
@@ -61,7 +61,7 @@ definition
   "mult \<equiv> \<lambda>m n f x. m (n f) x"
 
 
-text "unfolding a definition"
+text "Unfolding a definition:"
 
 definition
   c_0 :: "('a \<Rightarrow> 'a) \<Rightarrow> 'a \<Rightarrow> 'a" where
@@ -105,7 +105,7 @@ lemma "mult c_1 x = x"
   apply (rule refl)
   done
 
-section "Simply Typed \<open>\<lambda>-calculus\<close>"
+subsection "Simply Typed \<open>\<lambda>-calculus\<close>"
 
 text \<open>Try \<open>\texttt{term "\<lambda> a. a a"}\<close>\<close>
 
@@ -115,6 +115,5 @@ text \<open>
 \<close>
 
 term "\<lambda> y f. f (x y)"
-
 
 end

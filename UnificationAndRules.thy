@@ -1,8 +1,8 @@
+section "Types and Terms in Isabelle"
+
 theory UnificationAndRules
   imports Main
 begin
-
-section "Types and Terms in Isabelle"
 
 term "True"
 term "x"
@@ -54,8 +54,8 @@ lemma "(x::nat) + y = y + x"
 
 
 text \<open>
- \<open>schematic_goal command used to state lemmas that involve schematic variables which may be
-  instantiated during their proofs. Used quite rarely.\<close>
+ @{command schematic_goal} used to state lemmas that involve schematic variables which may be
+  instantiated during their proofs. Used quite rarely.
 \<close>
 
 thm TrueI
@@ -65,8 +65,8 @@ text \<open>
 
 
 schematic_goal mylemma: "?P x" 
-  apply(rule TrueI) (* instantiate ?P to be \<lambda>x. True *)
-  (* therefore your statement is ((\<lambda>x. True) x) which reduced to True*)
+  apply(rule TrueI) \<comment>\<open>instantiate ?P to be @{term "(\<lambda>x. True)"}\<close>
+  \<comment>\<open>therefore your statement is @{term "((\<lambda>x. True) x)"} which reduced to @{term "True"}\<close>
   done
 
 thm mylemma
@@ -84,12 +84,12 @@ section \<open>Propositional logic\<close>
 
 subsection \<open>Basic rules\<close>
 
-text \<open>\<open>\<and>\<close> \<close>
+text \<open>\<open>\<and>\<close>\<close>
 thm conjI 
 thm conjE 
 thm conjunct1 conjunct2
 
-text \<open>\<open>\<or>\<close> \<close>
+text \<open>\<open>\<or>\<close>\<close>
 thm disjI1 
 thm disjI2 
 thm disjE
@@ -100,12 +100,12 @@ thm impI impE
 
 subsection\<open>Examples\<close>
 
-text\<open>a simple backward step:\<close>
+text\<open>A simple backward step:\<close>
 lemma "A \<and> B" thm conjI
   apply(rule conjI)
   oops
 
-text\<open>a simple backward proof:\<close>
+text\<open>A simple backward proof:\<close>
 lemma "B \<and> A \<longrightarrow> A \<and> B" 
   apply (rule impI) thm impI
   apply (erule conjE)
@@ -148,7 +148,7 @@ lemma "\<not>A \<or> \<not>B \<Longrightarrow> \<not>(A \<and> B)"
 
 
 text \<open>Case distinctions.
-Isabelle can do case distinctions on arbitrary terms\<close>
+Isabelle can do case distinctions on arbitrary terms:\<close>
 
 lemma "P \<or> \<not>P"
   apply (case_tac "P")
@@ -211,7 +211,7 @@ lemma "A \<longrightarrow> B = (B \<or> \<not> A)"
   apply assumption
   done
 
-\<comment> \<open>more rules\<close>
+text \<open>More rules:\<close>
 text\<open>\<open>\<longrightarrow>\<close>\<close>
 thm mp
 
@@ -230,12 +230,12 @@ thm sym
 thm trans
 thm subst
 
-text \<open>classical (contradictions)\<close>
+text \<open>Classical (contradictions)\<close>
 thm classical
 thm ccontr
 thm excluded_middle
 
-text\<open>classical propositional logic:\<close>
+text\<open>Classical propositional logic:\<close>
 lemma Peirce: "((A \<longrightarrow> B) \<longrightarrow> A) \<longrightarrow> A"
   apply (rule impI) thm classical
   apply (rule classical)
@@ -246,7 +246,7 @@ lemma Peirce: "((A \<longrightarrow> B) \<longrightarrow> A) \<longrightarrow> A
   apply assumption
   done
 
-text \<open>defer and prefer\<close>
+text \<open>\<open>defer\<close> and \<open>prefer\<close>\<close>
 lemma "(A \<or> A) = (A \<and> A)"
   apply (rule iffI)
   prefer 2
@@ -264,7 +264,7 @@ lemma "A \<longrightarrow> (B \<or> C) \<longrightarrow> (\<not> A \<or> \<not> 
    apply (erule notE)
   by assumption
 
-text \<open>Exercises\<close>
+text \<open>Exercises:\<close>
 
 lemma "A \<and> B \<longrightarrow> A \<longrightarrow> B"
   oops

@@ -17,7 +17,7 @@ Then 0 + Suc 0 \<le> Suc 0 + x is simplified to True as follows:
 True\<close>
 \<close>
 
-text \<open>implicit backtracking\<close>
+text \<open>Implicit backtracking\<close>
 lemma "\<lbrakk>P \<and> Q; R \<and> S\<rbrakk> \<Longrightarrow> S"
   (* doesn't work -- picks the wrong assumption
   apply(erule conjE)
@@ -34,7 +34,7 @@ lemma "\<lbrakk>P \<and> Q; R \<and> S\<rbrakk> \<Longrightarrow> S"
 text \<open>'by' does extra assumption steps implicitly\<close>
   by (erule conjE)
 
-text \<open>more automation\<close>
+text \<open>More automation\<close>
 
 text \<open>clarsimp: repeated clarify and simp\<close>
 lemma "ys = []  \<Longrightarrow> \<forall>xs. xs @ ys = []"
@@ -56,7 +56,7 @@ lemma "(True \<and> True)"
   apply (rule TrueI)
   done
 
-text \<open>Fastforce method\<close>
+text \<open>fastforce method\<close>
 definition sq :: "nat \<Rightarrow> nat" where
   "sq n = n*n"
 
@@ -64,7 +64,7 @@ lemma "\<lbrakk> \<forall>xs \<in> A. \<exists>ys. xs = ys @ ys; us \<in> A \<rb
   by (fastforce simp add: sq_def)
 
 
-text \<open>simplification with assumptions, more control:\<close>
+text \<open>Simplification with assumptions, more control:\<close>
 
 lemma "\<forall>x. f x = g x \<and> g x = f x \<Longrightarrow> f [] = f [] @ []"
   text \<open>would diverge:\<close>
@@ -82,19 +82,19 @@ lemma "let a = f x in g a = x"
   apply (simp)
   oops
 
-text \<open>splitting if: automatic in conclusion\<close>
+text \<open>Splitting if: automatic in conclusion\<close>
 
 lemma "(A \<and> B) = (if A then B else False)"
   by simp
 
-text \<open>splitting manually\<close>
+text \<open>Splitting manually\<close>
 
 thm list.split
 
 lemma "1 \<le> (case ns of [] \<Rightarrow> 1 | n#_ \<Rightarrow> Suc n)"
   by (simp split: list.split)
 
-text \<open>splitting if: manual in assumptions\<close>
+text \<open>Splitting if: manual in assumptions\<close>
 thm if_splits
 thm if_split_asm
 
@@ -162,7 +162,7 @@ lemma "A \<and> (A \<longrightarrow> B)"
   using [[simp_trace]] apply (simp cong: conj_cong)
   oops
 
-text \<open>single stepping: subst\<close>
+text \<open>Single stepping: subst\<close>
 
 thm add.commute
 thm add.assoc

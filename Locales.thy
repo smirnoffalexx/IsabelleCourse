@@ -1,8 +1,8 @@
+section \<open>Locales\<close>
+
 theory Locales
   imports "HOL-Library.Countable_Set" 
 begin
-
-section \<open>Locales\<close>
 
 text\<open>
 Locales are based on context . 
@@ -173,7 +173,7 @@ proof -
 qed
 
 text\<open>
-theorems from the local interpretation disappear after leaving the proof context — that is,
+Theorems from the local interpretation disappear after leaving the proof context — that is,
 after the succeeding next or qed statement
 \<close>
 
