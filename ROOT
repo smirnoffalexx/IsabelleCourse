@@ -21,5 +21,7 @@ session Tasks (doc) = HOL +
     Isar_Demo
     Isar_Induction_Demo
     Locales
+    Stablecoin
+    insert
   document_files
     "root.tex"
